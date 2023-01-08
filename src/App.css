@@ -28,11 +28,46 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.flexRow {
+  margin-top:20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.tbl{
+  margin:50px;
+}
+
+.centerAlign{
+  text-align: center;
+  margin:10px;
+}
+
+.tbl tr th{
+  padding:5px;
+  border-bottom:1px solid #333;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.borderPanel{
+  border:1px solid #333;
+  border-radius: 10px;
+  padding:10px;
+  margin:10px;
+}
+
+.tbl tr td{
+  padding:5px;
+  border-bottom:1px solid #333;
+  font-size: 12px;
+  text-align: left;
+}
+
+
+.heading{
+  font-size:12px;
+  font-weight: 300;
 }
