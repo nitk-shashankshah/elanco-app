@@ -68,17 +68,24 @@ const Raw = () => {
       </div>
 
       {users.length > 0 && (
-        <div>           
+        <div>      
+          <br></br>     
+          <b>Total Cost:</b> <span>{users.filter(user => (user.ResourceGroup === application || application=="select"))
+              .filter(user => (user.MeterCategory === resource || resource=="select"))
+              .filter(user => (user.Tags.environment === environment || environment=="select"))
+              .filter(user => (user.Tags["business-unit"] === bu || bu=="select"))
+              .map((user, ind) => (user.Cost * user.ConsumedQuantity))
+              .reduce((a,v) =>  a = a + v , 0)}</span>
           <table cellPadding="0" cellSpacing="0" class="tbl">
             <thead>
                 <tr>
                   <th> ConsumedQuantity</th>
                   <th> Cost</th>             
+                  <th> UnitOfMeasure</th>
                   <th> Date</th>       
                   <th> InstanceId</th>           
                   <th> MeterCategory</th>
                   <th> ResourceGroup</th>
-                  <th> UnitOfMeasure</th>
                   <th> Location</th>
                   <th> Environment</th>
                   <th> Business Unit</th>
@@ -93,13 +100,13 @@ const Raw = () => {
               .filter(user => (user.Tags["business-unit"] === bu || bu=="select"))
               .map((user, ind) => (
                 <tr key={ind}>
-                  <td> {user.ConsumedQuantity}</td>              
+                  <td> {user.ConsumedQuantity}</td>
                   <td> {user.Cost}</td>
-                  <td> {user.Date}</td>              
-                  <td> {user.InstanceId}</td>              
-                  <td> {user.MeterCategory}</td>              
-                  <td> {user.ResourceGroup}</td>              
-                  <td> {user.UnitOfMeasure}</td>              
+                  <td> {user.UnitOfMeasure}</td>
+                  <td> {user.Date}</td>  
+                  <td> {user.InstanceId}</td>
+                  <td> {user.MeterCategory}</td>
+                  <td> {user.ResourceGroup}</td>
                   <td> {user.Location}</td>
                   <td> {user.Tags.environment}</td>
                   <td> {user.Tags["business-unit"]}</td>
@@ -108,7 +115,7 @@ const Raw = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table>     
         </div>
       )}
     </div>
